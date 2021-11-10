@@ -5,17 +5,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    UserDto getById(long id);
+    UserDto getById(int id);
 
-    static Integer save(UserDto userDto) {
-        return userDto.getId();
-    }
+    Integer createUser(UserDto userDto) ;
 
     void delete(UserDto userDto);
 
     void update(UserDto userDto);
 
-    void delete(Integer id);
+    void deleteById(Integer id);
 
     UserDto getUserByUsername(String username);
 

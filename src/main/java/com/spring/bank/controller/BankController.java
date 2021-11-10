@@ -15,21 +15,18 @@ public class BankController {
 
     @PostMapping("/user/{id}")
     public long createUser(@PathVariable int id, @RequestBody UserDto user) {
-        return UserService.save(user);
+        return userService.createUser(user);
     }
     @PutMapping("/user/{id}")
     public void updateUser(@PathVariable int id, @RequestBody UserDto userDto) {
 
-        UserService.save(userDto);
+        userService.createUser(userDto);
     }
 
-    @PostMapping("/user/{id}")
-    public long updateUserById(@PathVariable int id, @RequestBody UserDto user) {
-        return UserService.save(user);
-    }
 
     @GetMapping("/user/{id}")
     public UserDto getUserById(@PathVariable String id) {
+
         return userService.getById(Integer.parseInt(id));
     }
 
