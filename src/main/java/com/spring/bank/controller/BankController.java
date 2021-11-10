@@ -1,4 +1,4 @@
-package com.spring.bank.controllers;
+package com.spring.bank.controller;
 
 import com.spring.bank.dto.UserDto;
 import com.spring.bank.service.UserService;

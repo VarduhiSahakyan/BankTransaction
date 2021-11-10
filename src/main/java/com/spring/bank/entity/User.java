@@ -40,6 +40,9 @@ public class User {
     @Column(name="password")
     private String password;
 
+    @Column(name = "create_at")
+    private LocalDate createAt;
+
     @Column(name="role")
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -29,6 +29,9 @@ public class BankAccount {
     @JoinColumn(name = "bank_account_id")
     private User user;
 
+    @Column(name = "create_at")
+    private LocalDate createAt;
+
     @OneToMany
     @JoinColumn(name = "transaction_id")
     private Set<Transaction> transactions;

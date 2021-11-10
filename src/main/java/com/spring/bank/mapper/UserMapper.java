@@ -6,7 +6,7 @@ import com.spring.bank.entity.User;
 import java.util.stream.Collectors;
 
 
-public class UserMapper   {
+public final class UserMapper   {
     private UserMapper() {
     }
 
@@ -19,10 +19,11 @@ public class UserMapper   {
         userDto.setUsername(user.getUsername());
         userDto.setPassword(user.getPassword());
         userDto.setRole(user.getRole());
+        userDto.setCreatedAt(user.getCreateAt());
 
         userDto.setTransactionDtoSet(user.getTransactions()
-                .stream().
-                map(TransactionMapper::mapToSimpleDto)
+                .stream()
+                .map(TransactionMapper::mapToTransactionDto)
                 .collect(Collectors.toSet()));
 
 
@@ -47,22 +48,17 @@ public class UserMapper   {
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         user.setRole(userDto.getRole());
+        user.setCreateAt(userDto.getCreatedAt());
         user.setTransactions(userDto.getTransactionDtoSet()
-                .stream().
-                        map(TransactionMapper::mapToEntity)
+                .stream()
+                .map(TransactionMapper::mapToTransactionEntity)
                 .collect(Collectors.toSet()));
-
-
         user.setBankAccounts(userDto.getBankAccounts()
-                .stream().
-                        map(BankAccountMapper::mapEntity)
+                .stream()
+                .map(BankAccountMapper::mapToEntityBA)
                 .collect(Collectors.toSet()));
         return user;
 
-        owner.setVehicles(owner1.getVehicleDTOSet()
-                .stream()
-                .map(VehicleMapper::mapToEntity)
-                .collect(Collectors.toSet()));
-    }
 
+    }
 }

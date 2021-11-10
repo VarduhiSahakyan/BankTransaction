@@ -26,7 +26,6 @@ public class Transaction {
     @CreationTimestamp
     private LocalDate createdAt;
 
-
     @Column(name = "transaction_status")
     private String transactionStatus;
 

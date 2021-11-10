@@ -6,8 +6,8 @@ import com.spring.bank.entity.Transaction;
 import org.modelmapper.ModelMapper;
 
 
-public class TransactionMapper {
-    public static TransactionDto mapToSimpleDto(Transaction transaction) {
+public final class TransactionMapper {
+    public static TransactionDto mapToTransactionDto(Transaction transaction) {
         ModelMapper modelMapper = new ModelMapper();
         TransactionDto transactionDto = modelMapper.map(transaction, TransactionDto.class);
 
@@ -15,6 +15,14 @@ public class TransactionMapper {
 
     }
 
+
+    public static Transaction mapToTransactionEntity(TransactionDto transactionDto) {
+        ModelMapper modelMapper = new ModelMapper();
+        Transaction transaction = modelMapper.map(transactionDto, Transaction.class);
+
+
+        return transaction;
+    }
 
 }
 

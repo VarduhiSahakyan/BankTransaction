@@ -1,7 +1,5 @@
 package com.spring.bank.dto;
 
-
-import com.spring.bank.entity.BankAccount;
 import com.spring.bank.entity.enums.Role;
 import java.time.LocalDate;
 import java.util.Set;
@@ -25,7 +23,7 @@ public class UserDto {
     }
 
     public UserDto(Integer id, String firstName, String lastName, Set<TransactionDto> transactions, int age,
-                   String username, String password, Role role, Set<BankAccount> bankAccounts) {
+                   String username, String password, Role role, Set<BankAccountDto> bankAccounts) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
