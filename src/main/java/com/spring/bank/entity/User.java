@@ -1,14 +1,13 @@
 package com.spring.bank.entity;
 
-
-import com.spring.bank.dto.TransactionDto;
 import com.spring.bank.entity.enums.Role;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,7 +17,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Entity
 @DynamicUpdate
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -31,19 +30,20 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
 
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
     @Column(name = "create_at")
-    private LocalDate createAt;
+    @CreationTimestamp
+    private LocalDateTime createAt;
 
-    @Column(name="role")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
 

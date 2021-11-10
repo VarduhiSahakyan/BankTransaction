@@ -11,7 +11,7 @@ public final class TransactionMapper {
         ModelMapper modelMapper = new ModelMapper();
         TransactionDto transactionDto = modelMapper.map(transaction, TransactionDto.class);
 
-        return  transactionDto;
+        return transactionDto;
 
     }
 

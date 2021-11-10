@@ -1,76 +1,39 @@
 package com.spring.bank.dto;
 
 import com.spring.bank.entity.User;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class BankAccountDto {
 
 
     private Integer id;
     private int balance;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private User user;
     private Set<TransactionDto> transactions;
 
-    public BankAccountDto() {
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BankAccountDto that = (BankAccountDto) o;
+        return balance == that.balance && Objects.equals(id, that.id) && Objects.equals(createdAt, that.createdAt) && Objects.equals(user, that.user) && Objects.equals(transactions, that.transactions);
     }
 
-    public BankAccountDto(Integer id, int balance, LocalDate createdAt, User user) {
-        this.id = id;
-        this.balance = balance;
-        this.createdAt = createdAt;
-        this.user = user;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, balance, createdAt, user, transactions);
     }
-
-    public BankAccountDto(Integer id, int balance, LocalDate createdAt,
-                          User user, Set<TransactionDto> transactions) {
-        this.id = id;
-        this.balance = balance;
-        this.createdAt = createdAt;
-        this.user = user;
-        this.transactions = transactions;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Set<TransactionDto> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(Set<TransactionDto> transactions) {
-        this.transactions = transactions;
-    }
-
 }

@@ -18,7 +18,9 @@ public final class BankAccountMapper {
                 .collect(Collectors.toSet()));
         return bankAccountDto;
 
-    } public static BankAccount mapToEntityBA(BankAccountDto accountDto) {
+    }
+
+    public static BankAccount mapToEntityBA(BankAccountDto accountDto) {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setId(accountDto.getId());
         bankAccount.setBalance(accountDto.getBalance());

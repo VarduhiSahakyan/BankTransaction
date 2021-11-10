@@ -1,76 +1,38 @@
 package com.spring.bank.dto;
 
 import com.spring.bank.entity.User;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 
 public class TransactionDto {
 
     private Integer id;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     private String transactionType;
     private String transactionStatus;
     private Double transactionSum;
     private User user;
 
-    public TransactionDto() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TransactionDto that = (TransactionDto) o;
+        return Objects.equals(id, that.id) && Objects.equals(createdAt, that.createdAt) && Objects.equals(transactionType, that.transactionType) && Objects.equals(transactionStatus, that.transactionStatus) && Objects.equals(transactionSum, that.transactionSum) && Objects.equals(user, that.user);
     }
 
-    public TransactionDto(Integer id, LocalDate createdAt, String transactionType,
-                          String transactionStatus, Double transactionSum, User user) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.transactionType = transactionType;
-        this.transactionStatus = transactionStatus;
-        this.transactionSum = transactionSum;
-        this.user = user;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
-
-    public Double getTransactionSum() {
-        return transactionSum;
-    }
-
-    public void setTransactionSum(Double transactionSum) {
-        this.transactionSum = transactionSum;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, createdAt, transactionType, transactionStatus, transactionSum, user);
     }
 }

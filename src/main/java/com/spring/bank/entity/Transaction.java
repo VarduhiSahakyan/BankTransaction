@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -14,7 +14,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @DynamicUpdate
-@Table(name="transactions")
+@Table(name = "transactions")
 public class Transaction {
 
     @Id
@@ -24,7 +24,8 @@ public class Transaction {
     @Getter
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
+
 
     @Column(name = "transaction_status")
     private String transactionStatus;

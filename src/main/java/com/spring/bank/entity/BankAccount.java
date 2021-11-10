@@ -2,10 +2,11 @@ package com.spring.bank.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Entity
 @DynamicUpdate
-@Table(name="bank_account")
+@Table(name = "bank_account")
 public class BankAccount {
 
     @Id
@@ -30,7 +31,8 @@ public class BankAccount {
     private User user;
 
     @Column(name = "create_at")
-    private LocalDate createAt;
+    @CreationTimestamp
+    private LocalDateTime createAt;
 
     @OneToMany
     @JoinColumn(name = "transaction_id")

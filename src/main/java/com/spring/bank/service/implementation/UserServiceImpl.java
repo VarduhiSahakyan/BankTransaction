@@ -7,7 +7,7 @@ import com.spring.bank.repository.UserRepository;
 import com.spring.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.security.acl.Owner;
+import java.time.LocalDateTime;
 
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -21,27 +21,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer createUser(UserDto userDto) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        if (userDto.getCreatedAt() == null) {
+            userDto.setCreatedAt(localDateTime);
+        }
         return userRepository.save(UserMapper.mapToEntity(userDto)).getId();
     }
 
-
-
     @Override
     public void delete(UserDto userDto) {
-        User user = UserMapper.mapToEntity(userDto);
-        userRepository.delete(user);
+        userRepository.delete(UserMapper.mapToEntity(userDto));
     }
 
     @Override
     public void update(UserDto userDto) {
-        User user = UserMapper.mapToEntity(userDto);
-        userRepository.save(user);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        if (userDto.getCreatedAt() == null) {
+            userDto.setCreatedAt(localDateTime);
+        }
+        userRepository.save(UserMapper.mapToEntity(userDto));
     }
 
     @Override
     public void deleteById(Integer id) {
-       User user = userRepository.getById(id);
-       userRepository.delete(user);
+        User user = userRepository.getById(id);
+        userRepository.delete(user);
 
     }
 

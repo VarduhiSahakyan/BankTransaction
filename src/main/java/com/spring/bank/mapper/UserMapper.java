@@ -6,7 +6,7 @@ import com.spring.bank.entity.User;
 import java.util.stream.Collectors;
 
 
-public final class UserMapper   {
+public final class UserMapper {
     private UserMapper() {
     }
 
@@ -29,9 +29,8 @@ public final class UserMapper   {
 
         userDto.setBankAccounts(user.getBankAccounts()
                 .stream().
-                map(BankAccountMapper::mapToDtoBA)
+                        map(BankAccountMapper::mapToDtoBA)
                 .collect(Collectors.toSet()));
-
 
 
         return userDto;
