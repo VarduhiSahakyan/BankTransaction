@@ -24,6 +24,7 @@ public class BankController {
     }
 
 
+
     @GetMapping("/user/{id}")
     public UserDto getUserById(@PathVariable String id) {
 
