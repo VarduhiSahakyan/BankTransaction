@@ -1,6 +1,9 @@
 package com.spring.bank.controller;
 
+import com.spring.bank.dto.BankAccountDto;
 import com.spring.bank.dto.UserDto;
+import com.spring.bank.entity.BankAccount;
+import com.spring.bank.entity.User;
 import com.spring.bank.service.BankAccountService;
 import com.spring.bank.service.TransactionService;
 import com.spring.bank.service.UserService;
@@ -23,6 +26,7 @@ public class BankController {
 
     @PostMapping("/user/{id}")
     public long createUser(@PathVariable int id, @RequestBody UserDto user) {
+
         return userService.createUser(user);
     }
 
@@ -36,6 +40,12 @@ public class BankController {
     public UserDto getUserById(@PathVariable String id) {
 
         return userService.getById(Integer.parseInt(id));
+    }
+    @PostMapping("/create_bank_account/{id}")
+    public Integer createBankAccount(@PathVariable int id, @RequestBody BankAccountDto bankAccountDto){
+        return bankAccountService.createBankAccount(bankAccountDto);
+
+
     }
 
 
