@@ -6,21 +6,27 @@ import com.spring.bank.mapper.UserMapper;
 import com.spring.bank.repository.UserRepository;
 import com.spring.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
     @Override
     public UserDto getById(int id) {
-        User user = userRepository.getById(id);
+        User user = userRepository.findByid(id);
         return UserMapper.mapToDto(user);
     }
 
     @Override
     public Integer createUser(UserDto userDto) {
+        String encodedString = Base64.getEncoder().encodeToString(UserMapper.
+                mapToEntity(userDto).getPassword().getBytes());
+        UserMapper.mapToEntity(userDto).setPassword(encodedString);
         LocalDateTime localDateTime = LocalDateTime.now();
         if (userDto.getCreatedAt() == null) {
             userDto.setCreatedAt(localDateTime);

@@ -1,9 +1,7 @@
 package com.spring.bank.service;
 
 import com.spring.bank.dto.UserDto;
-import org.springframework.stereotype.Service;
 
-@Service
 public interface UserService {
     UserDto getById(int id);
 

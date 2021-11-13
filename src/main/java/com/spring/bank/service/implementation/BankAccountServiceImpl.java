@@ -6,9 +6,11 @@ import com.spring.bank.mapper.BankAccountMapper;
 import com.spring.bank.repository.BankAccountRepository;
 import com.spring.bank.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class BankAccountServiceImpl implements BankAccountService {
 
     @Autowired
