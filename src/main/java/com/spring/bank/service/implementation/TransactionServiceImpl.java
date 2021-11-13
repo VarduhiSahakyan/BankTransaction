@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class TransactionServiceImpl implements TransactionService {
 
     TransactionRepository transactionRepository;
+
     @Override
     public TransactionDto getByTransactionId(int id) {
         Transaction transaction = transactionRepository.getById(id);
@@ -22,7 +23,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Integer createTransaction(TransactionDto transactionDto) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        if(transactionDto.getCreatedAt() == null){
+        if (transactionDto.getCreatedAt() == null) {
             transactionDto.setCreatedAt(localDateTime);
         }
         return transactionRepository.save(TransactionMapper.mapToTransactionEntity(transactionDto)).getId();

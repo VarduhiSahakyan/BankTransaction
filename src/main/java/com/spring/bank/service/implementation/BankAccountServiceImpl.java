@@ -25,7 +25,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Override
     public Integer createBankAccount(BankAccountDto bankAccountDto) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        if (bankAccountDto.getCreatedAt() == null){
+        if (bankAccountDto.getCreatedAt() == null) {
             bankAccountDto.setCreatedAt(localDateTime);
         }
         return bankAccountRepository.save(BankAccountMapper.mapToEntityBA(bankAccountDto)).getId();
