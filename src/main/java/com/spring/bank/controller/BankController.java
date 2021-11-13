@@ -2,8 +2,6 @@ package com.spring.bank.controller;
 
 import com.spring.bank.dto.BankAccountDto;
 import com.spring.bank.dto.UserDto;
-import com.spring.bank.entity.BankAccount;
-import com.spring.bank.entity.User;
 import com.spring.bank.service.BankAccountService;
 import com.spring.bank.service.TransactionService;
 import com.spring.bank.service.UserService;
@@ -24,27 +22,27 @@ public class BankController {
     @Autowired
     BankAccountService bankAccountService;
 
-    @PostMapping("/user/{id}")
-    public long createUser(@PathVariable int id, @RequestBody UserDto user) {
+    @PostMapping("/user/create/{id}")
+    public long createUser( @RequestBody UserDto user) {
 
         return userService.createUser(user);
     }
 
-    @PutMapping("/user/{id}")
-    public void updateUser(@PathVariable int id, @RequestBody UserDto userDto) {
+    @PutMapping("/user/update/{id}")
+    public void updateUser(@PathVariable Integer id, @RequestBody UserDto userDto) {
 
         userService.createUser(userDto);
     }
 
-    @GetMapping("/user/{id}")
-    public UserDto getUserById(@PathVariable String id) {
+    @GetMapping("/user/get/{id}")
+    public UserDto getUserById(@PathVariable Integer id) {
 
-        return userService.getById(Integer.parseInt(id));
+        return userService.getById(id);
     }
-    @PostMapping("/create_bank_account/{id}")
-    public Integer createBankAccount(@PathVariable int id, @RequestBody BankAccountDto bankAccountDto){
-        return bankAccountService.createBankAccount(bankAccountDto);
 
+    @PostMapping("/create_bank_account/{id}")
+    public Integer createBankAccount(@PathVariable Integer id, @RequestBody BankAccountDto bankAccountDto) {
+        return bankAccountService.createBankAccount(bankAccountDto);
 
     }
 
